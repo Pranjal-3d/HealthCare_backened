@@ -1,3 +1,4 @@
+
 # Healthcare Backend - Django REST API
 
 ## Project Structure
@@ -184,3 +185,5 @@ In Postman → **Authorization** tab → Type: **Bearer Token** → paste your a
     "notes": "Primary care physician"
 }
 ```
+=======
+# HealthCare_backened
