@@ -1,0 +1,94 @@
+# ===========================
+# ENVIRONMENT VARIABLES
+# (Never push - contains DB password & secret key)
+# ===========================
+.env
+.env.local
+.env.production
+.env.staging
+
+# ===========================
+# PYTHON CACHE FILES
+# Covers all folders:
+# authentication/__pycache__/
+# doctors/__pycache__/
+# mappings/__pycache__/
+# patients/__pycache__/
+# healthcare_backend/__pycache__/
+# ===========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*$py.class
+
+# ===========================
+# VIRTUAL ENVIRONMENT
+# (Never push - contains thousands of package files)
+# ===========================
+venv/
+env/
+.venv/
+ENV/
+
+# ===========================
+# DJANGO SPECIFIC
+# ===========================
+*.sqlite3
+*.log
+db.sqlite3
+
+# Static and media files
+staticfiles/
+static_root/
+media/
+
+# ===========================
+# MIGRATIONS (keeping these is recommended)
+# Uncomment only if you don't want migrations pushed
+# ===========================
+# authentication/migrations/
+# doctors/migrations/
+# mappings/migrations/
+# patients/migrations/
+
+# ===========================
+# VS CODE
+# ===========================
+.vscode/
+*.code-workspace
+
+# ===========================
+# PYCHARM / JETBRAINS
+# ===========================
+.idea/
+*.iml
+
+# ===========================
+# WINDOWS OS FILES
+# ===========================
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ===========================
+# MAC OS FILES
+# ===========================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ===========================
+# PACKAGING & DISTRIBUTION
+# ===========================
+dist/
+build/
+*.egg-info/
+*.egg
+
+# ===========================
+# TESTING & COVERAGE
+# ===========================
+.coverage
+htmlcov/
+.pytest_cache/
