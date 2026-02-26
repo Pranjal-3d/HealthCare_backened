@@ -86,7 +86,7 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver
 ```
-Server runs at: **http://127.0.0.1:8000**
+
 
 ---
 
@@ -129,7 +129,7 @@ Server runs at: **http://127.0.0.1:8000**
 ## Testing with Postman
 
 ### Step 1: Register
-**POST** `http://127.0.0.1:8000/api/auth/register/`
+**POST** `https://healthcare-backened-qzmu.onrender.com/api/auth/register/`
 ```json
 {
     "name": "John Doe",
@@ -139,7 +139,7 @@ Server runs at: **http://127.0.0.1:8000**
 ```
 
 ### Step 2: Login
-**POST** `http://127.0.0.1:8000/api/auth/login/`
+**POST** `https://healthcare-backened-qzmu.onrender.com/api/auth/login/`
 ```json
 {
     "email": "john@example.com",
@@ -152,7 +152,7 @@ Copy the `access` token from the response.
 In Postman → **Authorization** tab → Type: **Bearer Token** → paste your access token.
 
 ### Step 4: Add a Patient
-**POST** `http://127.0.0.1:8000/api/patients/`
+**POST** `https://healthcare-backened-qzmu.onrender.com/api/patients/`
 ```json
 {
     "name": "Alice Smith",
@@ -165,7 +165,7 @@ In Postman → **Authorization** tab → Type: **Bearer Token** → paste your a
 ```
 
 ### Step 5: Add a Doctor
-**POST** `http://127.0.0.1:8000/api/doctors/`
+**POST** `https://healthcare-backened-qzmu.onrender.com/api/doctors/`
 ```json
 {
     "name": "Robert Brown",
@@ -177,7 +177,7 @@ In Postman → **Authorization** tab → Type: **Bearer Token** → paste your a
 ```
 
 ### Step 6: Assign Doctor to Patient
-**POST** `http://127.0.0.1:8000/api/mappings/`
+**POST** `https://healthcare-backened-qzmu.onrender.com/api/mappings/`
 ```json
 {
     "patient": 1,
