@@ -8,7 +8,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 from .serializers import RegisterSerializer, LoginSerializer
 
-
 class RegisterView(APIView):
     permission_classes = [AllowAny]
 
@@ -29,7 +28,6 @@ class RegisterView(APIView):
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 class LoginView(APIView):
     permission_classes = [AllowAny]
 
@@ -42,26 +40,28 @@ class LoginView(APIView):
         password = serializer.validated_data['password']
 
         # Authenticate using email as username
-        user = authenticate(request, username=email, password=password)
-        if not user:
-            return Response(
-                {"error": "Invalid email or password."},
-                status=status.HTTP_401_UNAUTHORIZED,
-            )
-
-        refresh = RefreshToken.for_user(user)
-        return Response(
-            {
-                "message": "Login successful.",
-                "tokens": {
-                    "access": str(refresh.access_token),
-                    "refresh": str(refresh),
-                },
+        user = authenticate(username=email, password=password)
+        if user is not None:
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                "refresh": str(refresh),
+                "access": str(refresh.access_token),
                 "user": {
                     "id": user.id,
                     "name": user.first_name,
                     "email": user.email,
-                },
-            },
-            status=status.HTTP_200_OK,
-        )
+                }
+            }, status=status.HTTP_200_OK)
+        return Response({"detail": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+
+# Placeholder for patient routes
+class PatientView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        # Logic to retrieve patient data
+        return Response({"message": "Patient data retrieved"}, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        # Logic to create a new patient
+        return Response({"message": "Patient created"}, status=status.HTTP_201_CREATED)
