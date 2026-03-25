@@ -42,26 +42,12 @@ class LoginView(APIView):
         password = serializer.validated_data['password']
 
         # Authenticate using email as username
-        user = authenticate(request, username=email, password=password)
-        if not user:
-            return Response(
-                {"error": "Invalid email or password."},
-                status=status.HTTP_401_UNAUTHORIZED,
-            )
+        user = authenticate(username=email, password=password)
 
-        refresh = RefreshToken.for_user(user)
-        return Response(
-            {
-                "message": "Login successful.",
-                "tokens": {
-                    "access": str(refresh.access_token),
-                    "refresh": str(refresh),
-                },
-                "user": {
-                    "id": user.id,
-                    "name": user.first_name,
-                    "email": user.email,
-                },
-            },
-            status=status.HTTP_200_OK,
-        )
+        if user is not None:
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                "refresh": str(refresh),
+                "access": str(refresh.access_token),
+            }, status=status.HTTP_200_OK)
+        return Response({"detail": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
